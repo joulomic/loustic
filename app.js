@@ -65,7 +65,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is Loustic. Check out my latest video: https://www.youtube.com/embed/roQb5HIQXB8";
+      var message = greeting + "My name is Loustic. Check out my latest video: https://www.youtube.com/watch?v=roQb5HIQXB8";
       sendMessage(senderId, {text: message});
     });
   }
