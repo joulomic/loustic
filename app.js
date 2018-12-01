@@ -79,7 +79,15 @@ function sendMessage(recipientId, message) {
     method: "POST",
     json: {
       recipient: {id: recipientId},
-      message: message,
+      message: {
+        attachment:{
+          type: "video",
+          payload:{
+            url:"",
+            text: message
+          }
+        }
+      }
     }
   }, function(error, response, body) {
     if (error) {
