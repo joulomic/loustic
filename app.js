@@ -65,7 +65,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is Loustic Boy. What music genre would you like to discover today ?";
+      var message = greeting + "My name is Loustic. Check out my latest video: https://youtu.be/roQb5HIQXB8";
       sendMessage(senderId, {text: message});
     });
   }
@@ -79,16 +79,8 @@ function sendMessage(recipientId, message) {
     method: "POST",
     json: {
       recipient: {id: recipientId},
-      message: {
-        attachment:{
-          type: "video",
-          payload:{
-            url:"",
-            text: message
+      message: message
           }
-        }
-      }
-    }
   }, function(error, response, body) {
     if (error) {
       console.log("Error sending message: " + response.error);
