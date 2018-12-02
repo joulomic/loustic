@@ -67,8 +67,16 @@ function processPostback(event) {
       }
       var message = greeting + "My name is Loustic. Check out my latest video: https://www.youtube.com/watch?v=roQb5HIQXB8";
       sendMessage(senderId, {text: message});
+      sendVideo(senderId);
     });
   }
+        if (event.message && event.message.text) {
+            text = event.message.text
+            if (text === 'music') || (text=== 'Music') {
+                sendVideo(senderId);
+                //continue
+            }
+        }
 }
 
 // sends message to user
@@ -86,5 +94,52 @@ function sendMessage(recipientId, message) {
       console.log("Error sending message: " + response.error);
     }
   });
+}
+
+function sendVideo(sender) {
+    messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Charlotte Grace",
+                    "subtitle": "Element #1 of an hscroll",
+                    "image_url": "https://i3.ytimg.com/vi/roQb5HIQXB8/hqdefault.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.youtube.com/watch?v=roQb5HIQXB8",
+                        "title": "Play video"
+                    }
+                    ],
+                }, {
+                    "title": "Chilla",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "https://i1.ytimg.com/vi/8bz6khgCZ30/hqdefault.jpg",
+                    "buttons": [{
+                        "type": "video",
+                        "url": "https://youtu.be/8bz6khgCZ30",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 }
 
