@@ -106,6 +106,11 @@ function sendVideo(sender) {
                     "title": "Charlotte Grace",
                     "subtitle": "Element #1 of an hscroll",
                     "image_url": "https://i3.ytimg.com/vi/roQb5HIQXB8/hqdefault.jpg",
+                    "default_action": {
+                      "type": "web_url",
+                      "url": "https://www.youtube.com/watch?v=roQb5HIQXB8",
+                      "webview_height_ratio": "tall",
+                    },
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.youtube.com/watch?v=roQb5HIQXB8",
@@ -116,6 +121,11 @@ function sendVideo(sender) {
                     "title": "Chilla",
                     "subtitle": "Element #2 of an hscroll",
                     "image_url": "https://i1.ytimg.com/vi/8bz6khgCZ30/hqdefault.jpg",
+                    "default_action": {
+                      "type": "web_url",
+                      "url": "https://youtu.be/8bz6khgCZ30",
+                      "webview_height_ratio": "tall",
+                    },
                     "buttons": [{
                         "type": "video",
                         "url": "https://youtu.be/8bz6khgCZ30",
