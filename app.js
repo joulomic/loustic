@@ -65,14 +65,14 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is Loustic. Check out my latest video: https://www.youtube.com/watch?v=roQb5HIQXB8";
+      var message = greeting + "My name is Loustic. Send 'Music' whenever you want to check out our latest videos";
       sendMessage(senderId, {text: message});
       sendVideo(senderId);
     });
   }
         if (event.message && event.message.text) {
-            text = event.message.text
-            if (text === 'music') || (text=== 'Music') {
+            var text = event.message.text
+            if (text === 'Music') {
                 sendVideo(senderId);
                 //continue
             }
