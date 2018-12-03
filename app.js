@@ -64,7 +64,7 @@ app.post('/webhook', function (req, res) {
           console.log(event);
           processPostback(event);
         }
-      }
+      })
     });
 
     // Returns a '200 OK' response to all requests
