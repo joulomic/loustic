@@ -67,7 +67,7 @@ function processPostback(event) {
       }
       var message = greeting + "My name is Loustic. Send 'Music' whenever you want to check out our latest videos";
       sendMessage(senderId, {text: message});
-      sendVideo(senderId);
+//      sendVideo(senderId);
     });
   }
   //     else if (event.message && event.message.text) {
@@ -96,6 +96,7 @@ function sendMessage(recipientId, message) {
   });
 }
 
+/*
 function sendVideo(sender) {
     messageData = {
         "attachment": {
@@ -152,4 +153,5 @@ function sendVideo(sender) {
         }
     });
 }
+*/
 
