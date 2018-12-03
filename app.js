@@ -24,7 +24,12 @@ app.post('/webhook', (req, res) => {
     req.body.entry.forEach((entry) => {
       entry.messaging.forEach((event) => {
         if (event.message && event.message.text) {
-          sendMessage(event);
+          if (event.message.text === 'Music') {
+            sendVideo(event.sender.id);
+          }
+          else {
+            sendMessage(event);
+          }
         }
       });
     });
@@ -56,7 +61,6 @@ function sendMessage(event) {
 }
 
 
-/*
 function sendVideo(sender) {
     messageData = {
         "attachment": {
@@ -113,5 +117,4 @@ function sendVideo(sender) {
         }
     });
 }
-*/
 
