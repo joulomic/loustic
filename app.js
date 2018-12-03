@@ -27,9 +27,14 @@ app.post('/webhook', (req, res) => {
           if (event.message.text === 'Music') {
             sendVideo(event.sender.id);
           }
-          else {
-            sendMessage(event);
-          }
+          //else {
+          //  sendMessage(event);
+          //}
+        }
+        else if (event.postback && event.postback.payload === GET_STARTED_PAYLOAD) {
+          var msg = "Hi, here are our latest videos. Later on, to check our newest videos, just send me 'Music' :)";
+          sendMessage(event, msg);
+          sendVideo(event.sender.id);
         }
       });
     });
@@ -39,9 +44,9 @@ app.post('/webhook', (req, res) => {
 
 const request = require('request');
 
-function sendMessage(event) {
+function sendMessage(event, msg) {
   let sender = event.sender.id;
-  let text = event.message.text;
+  let text = msg; //event.message.text;
 
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
