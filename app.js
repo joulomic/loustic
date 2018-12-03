@@ -77,7 +77,7 @@ function sendVideo(sender) {
                       "webview_height_ratio": "tall",
                     },
                     "buttons": [{
-                        "type": "web_url",
+                        "type": "postback",
                         "url": "https://www.youtube.com/watch?v=roQb5HIQXB8",
                         "title": "Play video"
                     }
