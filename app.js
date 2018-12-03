@@ -58,7 +58,6 @@ app.post('/webhook', function (req, res) {
 
       // Gets the message. entry.messaging is an array, but 
       // will only ever contain one message, so we get index 0
-      if (entry.messaging) {
       entry.messaging.forEach(function(event) { 
         if (event.message) {
           console.log("trace:");
@@ -66,7 +65,6 @@ app.post('/webhook', function (req, res) {
           processPostback(event);
         }
       })
-      }
     });
 
     // Returns a '200 OK' response to all requests
