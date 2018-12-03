@@ -59,11 +59,11 @@ app.post('/webhook', function (req, res) {
       // Gets the message. entry.messaging is an array, but 
       // will only ever contain one message, so we get index 0
       entry.messaging.forEach(function(event) { 
-        //if (event.message) {
+        if (event.message) {
           console.log("trace:");
           console.log(event);
           processPostback(event);
-        //}
+        }
       })
     });
 
@@ -78,7 +78,7 @@ app.post('/webhook', function (req, res) {
 
 function processPostback(event) {
   var senderId = event.sender.id;
-  var payload = event.postback.payload;
+/*  var payload = event.postback.payload;
 
   if (payload && payload === "Greeting") {
     // Get user's first name from the User Profile API
@@ -104,12 +104,13 @@ function processPostback(event) {
 //      sendVideo(senderId);
     });
   }
+*/
   //     else if (event.message && event.message.text) {
-  //          var text = event.message.text;
-  //          if (text === 'Music') {
-  //              sendVideo(senderId);
-  //              //continue
-  //          }
+            var text = event.message.text;
+            if (text === 'Music') {
+                sendVideo(senderId);
+                //continue
+            }
   //      }
 }
 
