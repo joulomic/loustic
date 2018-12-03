@@ -1,7 +1,7 @@
 const 
   express = require('express'),
   bodyParser = require('body-parser');
-
+car jsonParser = bodyParser.json();
 let app = express();
 app.use(bodyParser.urlencoded({"extended": false}));
 app.use(bodyParser.json());
@@ -26,7 +26,7 @@ app.get("/webhook", function (req, res) {
 });
 
 // All callbacks for Messenger will be POST-ed here
-//app.post("/webhook", function (req, res) {
+//app.post("/webhook", jsonParser, function (req, res) {
   // Make sure this is a page subscription
 //  if (req.body.object == "page") {
     // Iterate over each entry
