@@ -70,7 +70,7 @@ function processPostback(event) {
       sendVideo(senderId);
     });
   }
-        if (event.message && event.message.text) {
+       else if (event.message && event.message.text) {
             var text = event.message.text;
             if (text === 'Music') {
                 sendVideo(senderId);
