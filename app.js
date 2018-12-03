@@ -131,7 +131,6 @@ function sendMessage(recipientId, message) {
   });
 }
 
-/*
 function sendVideo(sender) {
     messageData = {
         "attachment": {
@@ -188,5 +187,4 @@ function sendVideo(sender) {
         }
     });
 }
-*/
 
