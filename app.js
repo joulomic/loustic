@@ -92,7 +92,7 @@ function sendVideo(sender) {
                       "webview_height_ratio": "tall",
                     },
                     "buttons": [{
-                        "type": "video",
+                        "type": "web_url",
                         "url": "https://youtu.be/8bz6khgCZ30",
                         "title": "Postback",
                         "payload": "Payload for second element in a generic bubble",
