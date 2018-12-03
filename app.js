@@ -46,7 +46,7 @@ app.get("/webhook", function (req, res) {
 //});
 
 // Creates the endpoint for our webhook 
-app.post('/webhook', function (req, res) {  
+app.post('/webhook', jsonParser, function (req, res) {  
  
   var data = req.body;
 
