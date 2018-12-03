@@ -59,11 +59,11 @@ app.post('/webhook', function (req, res) {
       // Gets the message. entry.messaging is an array, but 
       // will only ever contain one message, so we get index 0
       entry.messaging.forEach(function(event) { 
-        if (event.message) {
+        //if (event.message) {
           console.log("trace:");
           console.log(event);
           processPostback(event);
-        }
+        //}
       })
     });
 
@@ -80,7 +80,7 @@ function processPostback(event) {
   var senderId = event.sender.id;
   var payload = event.postback.payload;
 
-  if (payload === "Greeting") {
+  if (payload && payload === "Greeting") {
     // Get user's first name from the User Profile API
     // and include it in the greeting
     request({
