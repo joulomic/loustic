@@ -1,136 +1,62 @@
-const 
-  express = require('express'),
-  bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-let app = express();
-app.use(bodyParser.urlencoded({"extended": false}));
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 app.use(bodyParser.json());
-app.listen((process.env.PORT || 5000));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Server index page
-app.get("/", function (req, res) {
-  res.send("Deployed!");
+const server = app.listen(process.env.PORT || 5000, () => {
+  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-// Facebook Webhook
-// Used for verification
-app.get("/webhook", function (req, res) {
-  if (req.query["hub.verify_token"] === process.env.VERIFICATION_TOKEN) {
-    console.log("Verified webhook");
-    res.status(200).send(req.query["hub.challenge"]);
+/* For Facebook Validation */
+app.get('/webhook', (req, res) => {
+  if (req.query['hub.mode'] && req.query['hub.verify_token'] === process.env.VERIFICATION_TOKEN) {
+    res.status(200).send(req.query['hub.challenge']);
   } else {
-    console.log("Verification failed. The tokens do not match.");
-    console.error("Verification failed. The tokens do not match.");
-    res.sendStatus(403);
+    res.status(403).end();
   }
 });
 
-// All callbacks for Messenger will be POST-ed here
-//app.post("/webhook", jsonParser, function (req, res) {
-  // Make sure this is a page subscription
-//  if (req.body.object == "page") {
-    // Iterate over each entry
-    // There may be multiple entries if batched
-//    console.log(req.body.entry);
-//    req.body.entry.forEach(function(entry) {
-      // Iterate over each messaging event
-//      entry.messaging.forEach(function(event) {
-//        if (event.postback) {
-//          processPostback(event);
-//        }
-//      });
-//    });
-//
-//    res.sendStatus(200);
-//  }
-//});
-
-// Creates the endpoint for our webhook 
-app.post('/webhook', jsonParser, function (req, res) {  
- 
-  var data = req.body;
-
-  // Checks this is an event from a page subscription
-  if (data.object === 'page') {
-
-    // Iterates over each entry - there may be multiple if batched
-    data.entry.forEach(function(entry) {
-
-      // Gets the message. entry.messaging is an array, but 
-      // will only ever contain one message, so we get index 0
-      entry.messaging.forEach(function(event) { 
-        if (event.message) {
-          console.log("trace:");
-          console.log(event);
-          processPostback(event);
+/* Handling all messenges */
+app.post('/webhook', (req, res) => {
+  console.log(req.body);
+  if (req.body.object === 'page') {
+    req.body.entry.forEach((entry) => {
+      entry.messaging.forEach((event) => {
+        if (event.message && event.message.text) {
+          sendMessage(event);
         }
-      })
+      });
     });
-
-    // Returns a '200 OK' response to all requests
-    res.status(200).send('EVENT_RECEIVED');
-  } else {
-    // Returns a '404 Not Found' if event is not from a page subscription
-    res.sendStatus(404);
+    res.status(200).end();
   }
-
 });
 
-function processPostback(event) {
-  var senderId = event.sender.id;
-/*  var payload = event.postback.payload;
+const request = require('request');
 
-  if (payload && payload === "Greeting") {
-    // Get user's first name from the User Profile API
-    // and include it in the greeting
-    request({
-      url: "https://graph.facebook.com/v2.6/" + senderId,
-      qs: {
-        access_token: process.env.PAGE_ACCESS_TOKEN,
-        fields: "first_name"
-      },
-      method: "GET"
-    }, function(error, response, body) {
-      var greeting = "";
-      if (error) {
-        console.log("Error getting user's name: " +  error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        name = bodyObj.first_name;
-        greeting = "Hi " + name + ". ";
-      }
-      var message = greeting + "My name is Loustic. Send 'Music' whenever you want to check out our latest videos";
-      sendMessage(senderId, {text: message});
-//      sendVideo(senderId);
-    });
-  }
-*/
-  //     else if (event.message && event.message.text) {
-            var text = event.message.text;
-            if (text === 'Music') {
-                sendMessage(senderId, "toto");
-                //continue
-            }
-  //      }
-}
+function sendMessage(event) {
+  let sender = event.sender.id;
+  let text = event.message.text;
 
-// sends message to user
-function sendMessage(recipientId, message) {
   request({
-    url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: "POST",
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: PAGE_ACCESS_TOKEN},
+    method: 'POST',
     json: {
-      recipient: {id: recipientId},
-      message: message
-          }
-  }, function(error, response, body) {
+      recipient: {id: sender},
+      message: {text: text}
+    }
+  }, function (error, response) {
     if (error) {
-      console.log("Error sending message: " + response.error);
+        console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error);
     }
   });
 }
 
+
+/*
 function sendVideo(sender) {
     messageData = {
         "attachment": {
@@ -187,4 +113,5 @@ function sendVideo(sender) {
         }
     });
 }
+*/
 
