@@ -108,7 +108,7 @@ function processPostback(event) {
   //     else if (event.message && event.message.text) {
             var text = event.message.text;
             if (text === 'Music') {
-                sendVideo(senderId);
+                sendMessage(senderId, "toto");
                 //continue
             }
   //      }
