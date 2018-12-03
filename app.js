@@ -19,6 +19,7 @@ app.get("/webhook", function (req, res) {
     console.log("Verified webhook");
     res.status(200).send(req.query["hub.challenge"]);
   } else {
+    console.log("Verification failed. The tokens do not match.");
     console.error("Verification failed. The tokens do not match.");
     res.sendStatus(403);
   }
