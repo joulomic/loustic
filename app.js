@@ -70,13 +70,13 @@ function processPostback(event) {
       sendVideo(senderId);
     });
   }
-       else if (event.message && event.message.text) {
-            var text = event.message.text;
-            if (text === 'Music') {
-                sendVideo(senderId);
-                //continue
-            }
-        }
+  //     else if (event.message && event.message.text) {
+  //          var text = event.message.text;
+  //          if (text === 'Music') {
+  //              sendVideo(senderId);
+  //              //continue
+  //          }
+  //      }
 }
 
 // sends message to user
