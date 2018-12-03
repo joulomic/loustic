@@ -94,8 +94,7 @@ function sendVideo(sender) {
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://youtu.be/8bz6khgCZ30",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "title": "Play video",
                     }],
                 }]
             }
