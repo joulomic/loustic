@@ -64,7 +64,7 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data);
-                console.log('Title: ', data.regionCode);
+                console.log('Title: ', items[1]);
 //, data.items[1].snippet.title);
               } 
             });
