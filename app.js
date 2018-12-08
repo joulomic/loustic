@@ -20,7 +20,7 @@ var youtube = google.youtube({
     if (data) {
       console.log(data)
     }
-*/  });
+});*/
 
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
