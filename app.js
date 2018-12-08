@@ -66,11 +66,15 @@ app.post('/webhook', (req, res) => {
                 console.log(data);
                 //console.log('Title: ', items[1]);
                 //, data.items[1].snippet.title;
+                var title = data["items"][0]["snippet"]["title"];
+                var description = data["items"][0]["snippet"]["description"];
+                console.log(title);
+                /*
                 for(var i in data.items) {
                   console.log(i);
                   var item = data.items[i];
                   console.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
-                }
+                }*/
               } 
             });
           }
