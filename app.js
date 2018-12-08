@@ -49,7 +49,7 @@ app.post('/webhook', (req, res) => {
           //  sendMessage(event);
           //}
         }
-        else if (event.postback && event.postback.payload === USER_DEFINED_PAYLOAD) {
+        else if (event.postback && event.postback.payload === "GREETING") {
           handleGreetingPostback(event.sender.id);
         }
         else if (event.postback && event.postback.payload === START_NO) {
