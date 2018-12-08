@@ -3,6 +3,24 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+var google = require('googleapis');
+var youtube = google.youtube({
+   version: 'v3',
+   auth: "AIzaSyDoTv0uLjo42lMy7mlvgECfEx7t2e2Of38"
+});
+
+
+youtube.search.list({
+    part: 'snippet',
+    q: 'your search query'
+  }, function (err, data) {
+    if (err) {
+      console.error('Error: ' + err);
+    }
+    if (data) {
+      console.log(data)
+    }
+  });
 
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
@@ -31,10 +49,24 @@ app.post('/webhook', (req, res) => {
           //  sendMessage(event);
           //}
         }
-        else if (event.postback && event.postback.payload === GET_STARTED_PAYLOAD) {
-          var msg = "Hi, here are our latest videos. Later on, to check our newest videos, just send me 'Music' :)";
-          sendMessage(event, msg);
-          sendVideo(event.sender.id);
+        else if (event.postback && event.postback.payload === GREETING) {
+          handleGreetingPostback(event.sender.id)";
+        }
+        else if (event.postback && event.postback.payload === START_NO) {
+          sendMessage(event, "Alright, just text me 'Music' whenever you feel like discovering music later on!");
+        }
+        else if (event.postback && event.postback.payload === HIPHOP) { 
+          youtube.search.list({
+          part: 'snippet',
+          q: 'rap'
+          }, function (err, data) {
+            if (err) {
+              console.error('Error: ' + err);
+            }
+            if (data) {
+              console.log(data)
+            }
+          });
         }
       });
     });
@@ -65,6 +97,99 @@ function sendMessage(event, msg) {
   });
 }
 
+function handleGreetingPostback(sender_psid){
+  request({
+    url: `https://graph.facebook.com/v2.6/me/messages/${sender_psid}`,
+    qs: {
+      access_token: process.env.PAGE_ACCESS_TOKEN,
+      fields: "first_name"
+    },
+    method: "GET"
+  }, function(error, response, body) {
+    var greeting = "";
+    if (error) {
+      console.log("Error getting user's name: " +  error);
+    } else {
+      var bodyObj = JSON.parse(body);
+      const name = bodyObj.first_name;
+      greeting = "Hi " + name + ". ";
+    }
+    const message = greeting + "Would you like to discover our best videos now?";
+    const greetingPayload = {
+      "text": message,
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"Yes!",
+          "payload": START_YES
+        },
+        {
+          "content_type":"text",
+          "title":"No, thanks.",
+          "payload": START_NO
+        }
+      ]
+    };
+    callSendAPI(sender_psid, greetingPayload);
+  });
+}
+
+function handleStartYesPostback(sender_psid){
+  request({
+    url: `https://graph.facebook.com/v2.6/me/messages/${sender_psid}`,
+    qs: {
+      access_token: process.env.PAGE_ACCESS_TOKEN,
+      fields: "first_name"
+    },
+    method: "GET"
+  }, function(error, response, body) {
+    var greeting = "";
+    if (error) {
+      console.log("Error getting user's name: " +  error);
+    } else {
+      var bodyObj = JSON.parse(body);
+      const name = bodyObj.first_name;
+      greeting = "What are you interesting in listening?";
+    }
+    const message = greeting;
+    const greetingPayload = {
+      "text": message,
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"New!",
+          "payload": NEW
+        },
+        {
+          "content_type":"text",
+          "title":"Pop/Rock",
+          "payload": POPROCK
+        },
+        {
+          "content_type":"text",
+          "title":"World",
+          "payload": WORLD
+        },
+        {
+          "content_type":"text",
+          "title":"Hip hop",
+          "payload": HIPHOP
+        },
+        {
+          "content_type":"text",
+          "title":"Jazz",
+          "payload": JAZZ
+        },
+        {
+          "content_type":"text",
+          "title":"Electro",
+          "payload": ELECTRO
+        }
+      ]
+    };
+    callSendAPI(sender_psid, greetingPayload);
+  });
+}
 
 function sendVideo(sender) {
     messageData = {
