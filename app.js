@@ -58,6 +58,8 @@ app.post('/webhook', (req, res) => {
           else if (event.message.quick_reply.payload === "HIPHOP") {
             const res = youtube.search.list({ 
             part: 'snippet',
+            channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
+            maxResults: '50',
             q: 'rap'
             }, function (err, data) {
               if (err) {
