@@ -3,14 +3,14 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-var google = require('googleapis');
+const google = require('googleapis');
 var youtube = google.youtube({
    version: 'v3',
    auth: "AIzaSyDoTv0uLjo42lMy7mlvgECfEx7t2e2Of38"
 });
 
 
-youtube.search.list({
+/*youtube.search.list({
     part: 'snippet',
     q: 'your search query'
   }, function (err, data) {
@@ -20,7 +20,7 @@ youtube.search.list({
     if (data) {
       console.log(data)
     }
-  });
+*/  });
 
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
