@@ -66,7 +66,7 @@ app.post('/webhook', (req, res) => {
                 console.log(data);
                 //console.log('Title: ', items[1]);
                 //, data.items[1].snippet.title;
-                var parsedResponse = JSON.parse(data);
+                var parsedResponse = JSON.parse(data.toString());
                 var title = parsedResponse["items"][0]["snippet"]["title"];
                 var description = parsedResponse["items"][0]["snippet"]["description"];
                 console.log(title);
