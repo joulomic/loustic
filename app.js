@@ -75,7 +75,7 @@ app.post('/webhook', (req, res) => {
                 var json = {}; 
  
                 for(var i in data.data.items) {
-                  console.log("totoooooo"+i);
+                  console.log("totoooooo");
                   var title = data.data["items"][i]["snippet"]["title"];
                   var description = data.data["items"][i]["snippet"]["description"];
                   var thumb = data.data["items"][i]["snippet"]["thumbnails"]["standard"]["url"];
