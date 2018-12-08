@@ -58,18 +58,14 @@ app.post('/webhook', (req, res) => {
             const res = youtube.search.list({ 
             part: 'snippet',
             q: 'rap'
-            });
-            
-            console.log(res.data);
-            /*
-            , function (err, data) {
+            }, function (err, data) {
               if (err) {
                 console.error('Error: ' + err);
               } 
               if (data) {
                 console.log(data);
                 //console.log('Title: ', items[1]);
-                //, data.items[1].snippet.title);
+                //, data.items[1].snippet.title;
                 for(var i in data.items) {
                   console.log(i);
                   var item = data.items[i];
@@ -77,7 +73,6 @@ app.post('/webhook', (req, res) => {
                 }
               } 
             });
-            */
           }
         }
         else if (event.postback && event.postback.payload === "GREETING") {
