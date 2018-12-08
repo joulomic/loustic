@@ -64,8 +64,12 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data);
-                console.log('Title: ', items[1]);
-//, data.items[1].snippet.title);
+                //console.log('Title: ', items[1]);
+                //, data.items[1].snippet.title);
+                for(var i in data.items) {
+                  var item = data.items[i];
+                  console.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
+                }
               } 
             });
           }
