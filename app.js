@@ -121,12 +121,12 @@ function handleGreetingPostback(sender_psid){
         {
           "content_type":"text",
           "title":"Yes!",
-          "payload": START_YES
+          "payload": "START_YES"
         },
         {
           "content_type":"text",
           "title":"No, thanks.",
-          "payload": START_NO
+          "payload": "START_NO"
         }
       ]
     };
@@ -158,32 +158,32 @@ function handleStartYesPostback(sender_psid){
         {
           "content_type":"text",
           "title":"New!",
-          "payload": NEW
+          "payload": "NEW"
         },
         {
           "content_type":"text",
           "title":"Pop/Rock",
-          "payload": POPROCK
+          "payload": "POPROCK"
         },
         {
           "content_type":"text",
           "title":"World",
-          "payload": WORLD
+          "payload": "WORLD"
         },
         {
           "content_type":"text",
           "title":"Hip hop",
-          "payload": HIPHOP
+          "payload": "HIPHOP"
         },
         {
           "content_type":"text",
           "title":"Jazz",
-          "payload": JAZZ
+          "payload": "JAZZ"
         },
         {
           "content_type":"text",
           "title":"Electro",
-          "payload": ELECTRO
+          "payload": "ELECTRO"
         }
       ]
     };
