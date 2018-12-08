@@ -55,15 +55,19 @@ app.post('/webhook', (req, res) => {
             sendMessage(event, "Alright, just text me 'Music' whenever you feel like discovering music later on!");
           }
           else if (event.message.quick_reply.payload === "HIPHOP") {
-            youtube.search.list({ 
+            const res = youtube.search.list({ 
             part: 'snippet',
             q: 'rap'
-            }, function (err, data) {
+            });
+            
+            console.log(res.data);
+            /*
+            , function (err, data) {
               if (err) {
                 console.error('Error: ' + err);
               } 
               if (data) {
-                console.log(snippet.title);
+                console.log(data);
                 //console.log('Title: ', items[1]);
                 //, data.items[1].snippet.title);
                 for(var i in data.items) {
@@ -72,7 +76,9 @@ app.post('/webhook', (req, res) => {
                   console.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
                 }
               } 
-            });
+            }
+            */
+            );
           }
         }
         else if (event.postback && event.postback.payload === "GREETING") {
