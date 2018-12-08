@@ -50,7 +50,7 @@ app.post('/webhook', (req, res) => {
           //}
         }
         else if (event.postback && event.postback.payload === GREETING) {
-          handleGreetingPostback(event.sender.id)";
+          handleGreetingPostback(event.sender.id);
         }
         else if (event.postback && event.postback.payload === START_NO) {
           sendMessage(event, "Alright, just text me 'Music' whenever you feel like discovering music later on!");
