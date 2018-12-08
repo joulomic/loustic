@@ -64,10 +64,10 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               } 
               if (data) {
-                console.log(data);
+                console.log(data.data);
                 //console.log('Title: ', items[1]);
                 //, data.items[1].snippet.title;
-                var parsedResponse = JSON.stringify(data);
+                //var parsedResponse = JSON.stringify(data);
                 var title = parsedResponse["items"][0]["snippet"]["title"];
                 var description = parsedResponse["items"][0]["snippet"]["description"];
                 console.log(title);
