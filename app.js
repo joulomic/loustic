@@ -68,9 +68,6 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data.data);
-                var title = data.data["items"][0]["snippet"]["title"];
-                var description = data.data["items"][0]["snippet"]["description"];
-                console.log(title);
               
                 var json = {}; 
  
