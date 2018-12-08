@@ -72,13 +72,13 @@ app.post('/webhook', (req, res) => {
                 var json = {}; 
  
                 for(var i in data.data.items) {
-                  console.log("totoooooo");
+                  console.log('totoooooo');
                   var title = data.data["items"][i]["snippet"]["title"];
                   var description = data.data["items"][i]["snippet"]["description"];
                   var thumb = data.data["items"][i]["snippet"]["thumbnails"]["standard"]["url"];
                   var url = data.data["items"][i]["id"];
                   var item = data.items[i];
-                  message = {
+                  var message = {
                     "attachment": {
                       "type": "template",
                       "payload": {
@@ -102,7 +102,7 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
-                  json = json.concat(message);
+                  var json = json.concat(message);
                 }
                 sendYTVideo(event.sender.id, json);
               } 
