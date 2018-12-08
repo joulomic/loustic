@@ -77,7 +77,7 @@ app.post('/webhook', (req, res) => {
                   var description = data.data["items"][i]["snippet"]["description"];
                   var thumb = data.data["items"][i]["snippet"]["thumbnails"]["url"];
                   var url = data.data["items"][i]["id"];
-                  var item = data.items[i];
+                  //var item = data.items[i];
                   var message = {
                     "attachment": {
                       "type": "template",
