@@ -60,6 +60,7 @@ app.post('/webhook', (req, res) => {
             part: 'snippet',
             channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
             maxResults: '50',
+            order: 'date',
             q: 'rap'
             }, function (err, data) {
               if (err) {
@@ -67,18 +68,46 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data.data);
-                //console.log('Title: ', items[1]);
-                //, data.items[1].snippet.title;
-                //var parsedResponse = JSON.stringify(data);
                 var title = data.data["items"][0]["snippet"]["title"];
                 var description = data.data["items"][0]["snippet"]["description"];
                 console.log(title);
-                /*
-                for(var i in data.items) {
+              
+                var json = {}; 
+ 
+                for(var i in data.data.items) {
                   console.log(i);
+                  var title = data.data["items"][i]["snippet"]["title"];
+                  var description = data.data["items"][i]["snippet"]["description"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["standard"]["url"];
+                  var url = data.data["items"][i]["id"];
                   var item = data.items[i];
-                  console.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
-                }*/
+                  message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ],
+                        }
+                      }]
+                    }
+                  };
+                  json = json.concat(message);
+                }
+                sendYTVideo(event.sender.id, json);
               } 
             });
           }
@@ -229,6 +258,24 @@ function handleStartYesPostback(sender_psid){
       ]
     };
     callSendAPI(sender_psid, greetingPayload);
+  });
+}
+
+function sendYTVideo(sender, messageData) {
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: {
+          recipient: {id:sender},
+          message: messageData,
+      }
+  }, function(error, response, body) {
+      if (error) {
+          console.log('Error sending messages: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
   });
 }
 
