@@ -38,12 +38,12 @@ app.get('/webhook', (req, res) => {
 /* Handling all messenges */
 app.post('/webhook', (req, res) => {
   console.log(req.body);
-  if (req.body.entry.event.postback){ 
-    console.log(req.body.entry.event.postback.payload);
-  }
   if (req.body.object === 'page') {
     req.body.entry.forEach((entry) => {
       entry.messaging.forEach((event) => {
+        if (event.postback){
+          console.log(event.postback.payload);
+        }
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
             sendVideo(event.sender.id);
