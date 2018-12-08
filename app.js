@@ -63,7 +63,7 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               } 
               if (data) {
-                console.log('TOTO '+data);
+                console.log(data.title);
                 //console.log('Title: ', items[1]);
                 //, data.items[1].snippet.title);
                 for(var i in data.items) {
