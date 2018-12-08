@@ -76,9 +76,8 @@ app.post('/webhook', (req, res) => {
                   console.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
                 }
               } 
-            }
+            });
             */
-            );
           }
         }
         else if (event.postback && event.postback.payload === "GREETING") {
