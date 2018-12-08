@@ -64,7 +64,7 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data)
-                console.log('Title: ', data.item.id.videoId, data.item.snippet.title);
+                console.log('Title: ', data.items[1].id.videoId, data.items[1].snippet.title);
               } 
             });
           }
