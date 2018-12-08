@@ -55,6 +55,9 @@ app.post('/webhook', (req, res) => {
         else if (event.postback && event.postback.payload === "START_NO") {
           sendMessage(event, "Alright, just text me 'Music' whenever you feel like discovering music later on!");
         }
+        else if (event.postback && event.postback.payload === "START_YES") {
+          handleStartYesPostback(event.sender.id);
+        }
         else if (event.postback && event.postback.payload === "HIPHOP") { 
           youtube.search.list({
           part: 'snippet',
@@ -99,7 +102,7 @@ function sendMessage(event, msg) {
 
 function handleGreetingPostback(sender_psid){
   request({
-    url: `https://graph.facebook.com/v2.6/me/messages/${sender_psid}`,
+    url: "https://graph.facebook.com/v2.6/" + sender_psid,
     qs: {
       access_token: process.env.PAGE_ACCESS_TOKEN,
       fields: "first_name"
