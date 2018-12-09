@@ -449,11 +449,15 @@ app.post('/webhook', (req, res) => {
           //freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
-
-        else if (event.postback && event.postback.payload === "GREETING") {
+        }
+        else if (event.postback){
+        if (event.postback && event.postback.payload === "GREETING") {
           handleGreetingPostback(event.sender.id);
         }
-        
+        else if (event.postback === "MORE") {
+          //freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
         /*
         else if (event.postback && event.postback.payload === "START_NO") {
           sendMessage(event, "Alright, just text me 'Music' whenever you feel like discovering music later on!");
