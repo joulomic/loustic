@@ -79,24 +79,24 @@ app.post('/webhook', (req, res) => {
                   var thumb = data.data["items"][i]["snippet"]["thumbnails"]["url"];
                   var url = data.data["items"][i]["id"];
                   //var item = data.items[i];
-                  var message = {
-                    "attachment": {
-                      "type": "template",
-                      "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                          "title": title,
-                          "subtitle": description,
-                          "image_url": thumb,
-                          "default_action": {
-                            "type": "web_url",
-                            "url": "https://www.youtube.com/watch?v="+url,
-                            "webview_height_ratio": "tall",
+                  var message = "{
+                    \"attachment\": {
+                      \"type\": \"template\",
+                      \"payload\": {
+                        \"template_type\": \"generic\",
+                        \"elements\": [{
+                          \"title\": title,
+                          \"subtitle\": description,
+                          \"image_url\": thumb,
+                          \"default_action\": {
+                            \"type\": \"web_url\",
+                            \"url\": \"https://www.youtube.com/watch?v=\"+url,
+                            \"webview_height_ratio\": \"tall\",
                           },
-                          "buttons": [{
-                            "type": "web_url",
-                            "url": "https://www.youtube.com/watch?v="+url,
-                            "title": "Play video"
+                          \"buttons\": [{
+                            \"type\": \"web_url\",
+                            \"url\": \"https://www.youtube.com/watch?v=\"+url,
+                            \"title\": \"Play video\"
                           }
                           ],
                         }
