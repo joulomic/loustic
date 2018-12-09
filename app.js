@@ -131,6 +131,7 @@ app.post('/webhook', (req, res) => {
                   }
                   else {
                     elements.concat(message);
+                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
