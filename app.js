@@ -93,6 +93,10 @@ app.post('/webhook', (req, res) => {
                             "type": "web_url",
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
+                          },{
+                          "type":"postback",
+                          "title":"Browse more",
+                          "payload":"MORE"
                           }
                           ]
                         };
@@ -183,9 +187,6 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               
             });
-          
-          freeze(3000);
-          handleStartYesPostback(event.sender.id);
         }
 
         else if (event.message.quick_reply.payload === "POPROCK") {
@@ -250,9 +251,6 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               
             });
-          
-          freeze(3000);
-          handleStartYesPostback(event.sender.id);
         }
 
         else if (event.message.quick_reply.payload === "WORLD") {
@@ -317,9 +315,6 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               
             });
-          
-          freeze(3000);
-          handleStartYesPostback(event.sender.id);
         }
 
         else if (event.message.quick_reply.payload === "ELECTRO") {
@@ -384,9 +379,6 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               
             });
-          
-          freeze(3000);
-          handleStartYesPostback(event.sender.id);
         }
 
         else if (event.message.quick_reply.payload === "NEW") {
@@ -452,6 +444,11 @@ app.post('/webhook', (req, res) => {
                
             });
           
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
+
+        else if (event.postback && event.postback.payload === "MORE") {
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
@@ -622,8 +619,6 @@ function sendYTVideo(sender, messageData) {
           console.log('Error: ', response.body.error);
       }
   });
-  freeze(3000);
-  handleStartYesPostback(sender);
 }
 
 function freeze(time) {
