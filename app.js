@@ -69,8 +69,8 @@ app.post('/webhook', (req, res) => {
               if (data) {
                 console.log(data.data);
               
-                var msg = "{"; 
-                var msgEnd = "}";
+                var msg = "{ }"; 
+                //var msgEnd = "}";
  
                 for(var i in data.data.items) {
                   console.log('totoooooo');
@@ -103,9 +103,9 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
-                  msg = msg.concat(message);
+                  msg = Object.assign(msg, message);
                 }
-                msg = msg.concat(msgEnd);
+                //msg = msg.concat(msgEnd);
                 console.log(msg);
                 sendYTVideo(event.sender.id, msg);
               } 
