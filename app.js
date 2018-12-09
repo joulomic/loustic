@@ -102,7 +102,7 @@ app.post('/webhook', (req, res) => {
                         }
                       ]
                     }
-                  }};
+                  }}";
                   msg = msg.concat(message);
                 }
                 msg = msg.concat(msgEnd);
