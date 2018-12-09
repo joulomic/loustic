@@ -119,9 +119,6 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
                
             });
-          
-          freeze(6000);
-          handleStartYesPostback(event.sender.id);
         }
  
         else if (event.message.quick_reply.payload === "JAZZ") {
@@ -625,6 +622,8 @@ function sendYTVideo(sender, messageData) {
           console.log('Error: ', response.body.error);
       }
   });
+  freeze(3000);
+  handleStartYesPostback(event.sender.id);
 }
 
 function freeze(time) {
