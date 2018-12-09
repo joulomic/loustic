@@ -112,6 +112,8 @@ app.post('/webhook', (req, res) => {
                       // Yes, append these entries to it
                       other.push(...message[key]);
                     }
+                    else
+                      other[key] = message[key];
                   }
                   //msg = Object.assign(msg, message);
                 }
