@@ -122,7 +122,7 @@ app.post('/webhook', (req, res) => {
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
                           }
-                          ],
+                          ]
                         }
                       ];
                   if (i == 0) {
