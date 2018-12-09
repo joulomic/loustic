@@ -113,10 +113,10 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }
-                }};
+                }}};
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-              } 
+               
             });
           
           freeze(3000);
@@ -180,10 +180,10 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }
-                }};
+                }}};
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-              }
+              
             });
           
           freeze(3000);
@@ -247,10 +247,10 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }
-                }};
+                }}};
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-              }
+              
             });
           
           freeze(3000);
@@ -314,10 +314,10 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }
-                }};
+                }}};
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-              }
+              
             });
           
           freeze(3000);
@@ -381,10 +381,10 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }
-                }};
+                }}};
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-              }
+              
             });
           
           freeze(3000);
@@ -448,10 +448,10 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }   
-                }}; 
+                }}}; 
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-              } 
+               
             });
           
           freeze(3000);
