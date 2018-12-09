@@ -74,7 +74,7 @@ app.post('/webhook', (req, res) => {
  
                 for(var i in data.data.items) {
                   console.log('totoooooo');
-                  console.log(i);
+                  console.log(i==0);
                   var title = data.data["items"][i]["snippet"]["title"];
                   var description = data.data["items"][i]["snippet"]["description"];
                   var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
@@ -106,7 +106,7 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
-                  if (i === 0) {
+                  if (i == 0) {
                     var msg = message;
                     console.log(msg);
                   }
