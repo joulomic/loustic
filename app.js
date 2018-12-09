@@ -129,7 +129,7 @@ app.post('/webhook', (req, res) => {
                     elements.push(message);
                     console.log(elements);
                   }
-                  else {
+                  else if (i <= 5){
                     elements.push(message);
                     console.log(elements);
                   }
