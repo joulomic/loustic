@@ -106,7 +106,7 @@ app.post('/webhook', (req, res) => {
                   msg = Object.assign(msg, message);
                 }
                 //msg = msg.concat(msgEnd);
-                console.log(msg);
+                console.log(msg.elements);
                 sendYTVideo(event.sender.id, msg);
               } 
             });
