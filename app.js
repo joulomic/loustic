@@ -47,6 +47,7 @@ app.post('/webhook', (req, res) => {
         }
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
+            console/log('Music');
             handleStartYesPostback(event.sender.id);
             //sendVideo(event.sender.id);
           }
@@ -119,7 +120,7 @@ app.post('/webhook', (req, res) => {
                
             });
           
-          freeze(3000);
+          freeze(6000);
           handleStartYesPostback(event.sender.id);
         }
  
@@ -566,7 +567,7 @@ function handleStartYesPostback(sender_psid){
     } else {
       var bodyObj = JSON.parse(body);
       const name = bodyObj.first_name;
-      greeting = "What are you interesting in listening?";
+      greeting = "What are you interested in listening to?";
     }
     const message = greeting;
     const greetingPayload = {
