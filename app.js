@@ -623,7 +623,7 @@ function sendYTVideo(sender, messageData) {
       }
   });
   freeze(3000);
-  handleStartYesPostback(event.sender.id);
+  handleStartYesPostback(sender);
 }
 
 function freeze(time) {
