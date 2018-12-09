@@ -484,7 +484,7 @@ app.post('/webhook', (req, res) => {
         */
 
       };
-    });
+    }}});
     res.status(200).end();
   }
 );
