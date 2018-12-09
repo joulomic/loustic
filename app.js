@@ -47,7 +47,7 @@ app.post('/webhook', (req, res) => {
         }
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
-            console/log('Music');
+            console.log('Music');
             handleStartYesPostback(event.sender.id);
             //sendVideo(event.sender.id);
           }
