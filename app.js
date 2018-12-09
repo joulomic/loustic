@@ -443,13 +443,10 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
                
             });
-          
-          freeze(3000);
-          handleStartYesPostback(event.sender.id);
         }
 
-        else if (event.postback && event.postback.payload === "MORE") {
-          freeze(3000);
+        else if (event.message.quick_reply.payload === "MORE") {
+          //freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
 
