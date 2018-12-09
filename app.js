@@ -104,6 +104,7 @@ app.post('/webhook', (req, res) => {
                   }};
                   msg = msg.concat(message);
                 }
+                console.log(msg);
                 sendYTVideo(event.sender.id, msg);
               } 
             });
