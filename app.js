@@ -69,7 +69,7 @@ app.post('/webhook', (req, res) => {
               if (data) {
                 console.log(data.data);
               
-                var msg = {"attachment":""}; 
+                //var msg = {}; 
                 //var msgEnd = "}";
  
                 for(var i in data.data.items) {
@@ -105,6 +105,8 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
+                  if i == 0
+                    var msg = message;
                   for (const key of Object.keys(message)) {
                     // See if obj1 also has this
                     const other = msg[key];
