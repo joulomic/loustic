@@ -105,7 +105,7 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
-                  if i == 0
+                  if (i === 0)
                     var msg = message;
                   for (const key of Object.keys(message)) {
                     // See if obj1 also has this
