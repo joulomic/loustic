@@ -69,9 +69,6 @@ app.post('/webhook', (req, res) => {
               if (data) {
                 console.log(data.data);
               
-                //var msg = {}; 
-                //var msgEnd = "}";
- 
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
@@ -81,33 +78,6 @@ app.post('/webhook', (req, res) => {
                   var url = data.data["items"][i]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
-                  //var item = data.items[i];
-                  /*
-                  var message = {
-                    "attachment": {
-                      "type": "template",
-                      "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                          "title": title,
-                          "subtitle": description,
-                          "image_url": thumb,
-                          "default_action": {
-                            "type": "web_url",
-                            "url": "https://www.youtube.com/watch?v="+url,
-                            "webview_height_ratio": "tall",
-                          },
-                          "buttons": [{
-                            "type": "web_url",
-                            "url": "https://www.youtube.com/watch?v="+url,
-                            "title": "Play video"
-                          }
-                          ],
-                        }
-                      ]
-                    }
-                  }};
-                  */
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -142,16 +112,351 @@ app.post('/webhook', (req, res) => {
                         "template_type": "generic",
                         "elements": elements
                     }
-                  }};
-                //msg = msg.concat(msgEnd);
+                }};
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
-                freeze(3000);
-                handleStartYesPostback(event.sender.id);
               } 
             });
           }
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
         }
+ 
+        else if (event.message.quick_reply.payload === "JAZZ") {
+            const res = youtube.search.list({
+            part: 'snippet',
+            channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
+            maxResults: '50',
+            //order: 'date',
+            q: 'jazz'
+            }, function (err, data) {
+              if (err) {
+                console.error('Error: ' + err);
+              }
+              if (data) {
+                console.log(data.data);
+
+                for(var i in data.data.items) {
+                  console.log('totoooooo');
+                  console.log(i==0);
+                  var title = data.data["items"][i]["snippet"]["title"];
+                  var description = data.data["items"][i]["snippet"]["description"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][i]["id"]["videoId"];
+                  console.log(thumb);
+                  console.log(url);
+                  var message = {
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ]
+                        };        
+                  if (i == 0) {
+                    var elements = [];
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  else if (i <= 4){
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  //msg = Object.assign(msg, message);
+                }
+                var message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }
+                }};
+                console.log(elements);
+                sendYTVideo(event.sender.id, message);
+              }
+            });
+          }
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
+
+        else if (event.message.quick_reply.payload === "POPROCK") {
+            const res = youtube.search.list({
+            part: 'snippet',
+            channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
+            maxResults: '50',
+            //order: 'date',
+            q: 'pop|rock'
+            }, function (err, data) {
+              if (err) {
+                console.error('Error: ' + err);
+              }
+              if (data) {
+                console.log(data.data);
+
+                for(var i in data.data.items) {
+                  console.log('totoooooo');
+                  console.log(i==0);
+                  var title = data.data["items"][i]["snippet"]["title"];
+                  var description = data.data["items"][i]["snippet"]["description"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][i]["id"]["videoId"];
+                  console.log(thumb);
+                  console.log(url);
+                  var message = {
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ]
+                        };
+                  if (i == 0) {
+                    var elements = [];
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  else if (i <= 4){
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  //msg = Object.assign(msg, message);
+                }
+                var message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }
+                }};
+                console.log(elements);
+                sendYTVideo(event.sender.id, message);
+              }
+            });
+          }
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
+
+        else if (event.message.quick_reply.payload === "WORLD") {
+            const res = youtube.search.list({
+            part: 'snippet',
+            channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
+            maxResults: '50',
+            //order: 'date',
+            q: 'world'
+            }, function (err, data) {
+              if (err) {
+                console.error('Error: ' + err);
+              }
+              if (data) {
+                console.log(data.data);
+
+                for(var i in data.data.items) {
+                  console.log('totoooooo');
+                  console.log(i==0);
+                  var title = data.data["items"][i]["snippet"]["title"];
+                  var description = data.data["items"][i]["snippet"]["description"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][i]["id"]["videoId"];
+                  console.log(thumb);
+                  console.log(url);
+                  var message = {
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ]
+                        };
+                  if (i == 0) {
+                    var elements = [];
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  else if (i <= 4){
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  //msg = Object.assign(msg, message);
+                }
+                var message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }
+                }};
+                console.log(elements);
+                sendYTVideo(event.sender.id, message);
+              }
+            });
+          }
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
+
+        else if (event.message.quick_reply.payload === "ELECTRO") {
+            const res = youtube.search.list({
+            part: 'snippet',
+            channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
+            maxResults: '50',
+            //order: 'date',
+            q: 'electro'
+            }, function (err, data) {
+              if (err) {
+                console.error('Error: ' + err);
+              }
+              if (data) {
+                console.log(data.data);
+
+                for(var i in data.data.items) {
+                  console.log('totoooooo');
+                  console.log(i==0);
+                  var title = data.data["items"][i]["snippet"]["title"];
+                  var description = data.data["items"][i]["snippet"]["description"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][i]["id"]["videoId"];
+                  console.log(thumb);
+                  console.log(url);
+                  var message = {
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ]
+                        };
+                  if (i == 0) {
+                    var elements = [];
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  else if (i <= 4){
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  //msg = Object.assign(msg, message);
+                }
+                var message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }
+                }};
+                console.log(elements);
+                sendYTVideo(event.sender.id, message);
+              }
+            });
+          }
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
+
+        else if (event.message.quick_reply.payload === "NEW") {
+            const res = youtube.search.list({
+            part: 'snippet',
+            channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
+            maxResults: '50',
+            order: 'date',
+            //q: 'electro'
+            }, function (err, data) {
+              if (err) {
+                console.error('Error: ' + err);
+              }
+              if (data) {
+                console.log(data.data);
+
+                for(var i in data.data.items) {
+                  console.log('totoooooo');
+                  console.log(i==0);
+                  var title = data.data["items"][i]["snippet"]["title"];
+                  var description = data.data["items"][i]["snippet"]["description"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][i]["id"]["videoId"];
+                  console.log(thumb);
+                  console.log(url);
+                  var message = {
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ]
+                        };
+                  if (i == 0) {
+                    var elements = [];
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  else if (i <= 4){
+                    elements.push(message);
+                    console.log(elements);
+                  }
+                  //msg = Object.assign(msg, message);
+                }
+                var message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }   
+                }}; 
+                console.log(elements);
+                sendYTVideo(event.sender.id, message);
+              } 
+            });
+          }
+          freeze(3000);
+          handleStartYesPostback(event.sender.id);
+        }
+
         else if (event.postback && event.postback.payload === "GREETING") {
           handleGreetingPostback(event.sender.id);
         }
