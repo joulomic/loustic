@@ -78,6 +78,8 @@ app.post('/webhook', (req, res) => {
                   var description = data.data["items"][i]["snippet"]["description"];
                   var thumb = data.data["items"][i]["snippet"]["thumbnails"]["url"];
                   var url = data.data["items"][i]["id"];
+                  console.log(thumb);
+                  console.log(url);
                   //var item = data.items[i];
                   var message = {
                     "attachment": {
@@ -106,7 +108,7 @@ app.post('/webhook', (req, res) => {
                   msg = Object.assign(msg, message);
                 }
                 //msg = msg.concat(msgEnd);
-                console.log(msg.elements);
+                console.log(msg);
                 sendYTVideo(event.sender.id, msg);
               } 
             });
