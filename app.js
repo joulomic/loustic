@@ -117,7 +117,7 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               } 
             });
-          }
+          
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
@@ -184,7 +184,7 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               }
             });
-          }
+          
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
@@ -251,7 +251,7 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               }
             });
-          }
+          
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
@@ -318,7 +318,7 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               }
             });
-          }
+          
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
@@ -385,7 +385,7 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               }
             });
-          }
+          
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
@@ -452,7 +452,7 @@ app.post('/webhook', (req, res) => {
                 sendYTVideo(event.sender.id, message);
               } 
             });
-          }
+          
           freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
