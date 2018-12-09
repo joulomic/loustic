@@ -82,6 +82,7 @@ app.post('/webhook', (req, res) => {
                   console.log(thumb);
                   console.log(url);
                   //var item = data.items[i];
+                  /*
                   var message = {
                     "attachment": {
                       "type": "template",
@@ -106,13 +107,31 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
+                  */
+                  var message = [{
+                          "title": title,
+                          "subtitle": description,
+                          "image_url": thumb,
+                          "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "webview_height_ratio": "tall",
+                          },
+                          "buttons": [{
+                            "type": "web_url",
+                            "url": "https://www.youtube.com/watch?v="+url,
+                            "title": "Play video"
+                          }
+                          ],
+                        }
+                      ];
                   if (i == 0) {
-                    var msg = message;
-                    console.log(msg);
+                    var elements = message;
+                    console.log(elements);
                   }
                   for (const key of Object.keys(message)) {
                     // See if obj1 also has this
-                    const other = msg[key];
+                    const other = elements[key];
                     if (other) {
                       // Yes, append these entries to it
                       other.push(...message[key]);
@@ -122,6 +141,14 @@ app.post('/webhook', (req, res) => {
                   }
                   //msg = Object.assign(msg, message);
                 }
+                var message = {
+                    "attachment": {
+                      "type": "template",
+                      "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }
+                  }};
                 //msg = msg.concat(msgEnd);
                 console.log(msg);
                 sendYTVideo(event.sender.id, msg);
