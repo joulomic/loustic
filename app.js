@@ -76,8 +76,8 @@ app.post('/webhook', (req, res) => {
                   console.log('totoooooo');
                   var title = data.data["items"][i]["snippet"]["title"];
                   var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["url"];
-                  var url = data.data["items"][i]["id"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["standard"]["url"];
+                  var url = data.data["items"][i]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   //var item = data.items[i];
