@@ -47,7 +47,8 @@ app.post('/webhook', (req, res) => {
         }
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
-            sendVideo(event.sender.id);
+            handleStartYesPostback(event.sender.id);
+            //sendVideo(event.sender.id);
           }
           else if (event.message.quick_reply.payload === "START_YES") {
             handleStartYesPostback(event.sender.id);
