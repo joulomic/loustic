@@ -69,7 +69,7 @@ app.post('/webhook', (req, res) => {
               if (data) {
                 console.log(data.data);
               
-                var msg = "{ }"; 
+                var msg; 
                 //var msgEnd = "}";
  
                 for(var i in data.data.items) {
