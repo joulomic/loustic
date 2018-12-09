@@ -76,7 +76,7 @@ app.post('/webhook', (req, res) => {
                   console.log('totoooooo');
                   var title = data.data["items"][i]["snippet"]["title"];
                   var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["default"]["url"];
+                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][i]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
@@ -105,7 +105,15 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
-                  msg = Object.assign(msg, message);
+                  for (const key of Object.keys(message)) {
+                    // See if obj1 also has this
+                    const other = msg[key];
+                    if (other) {
+                      // Yes, append these entries to it
+                      other.push(...message[key]);
+                    }
+                  }
+                  //msg = Object.assign(msg, message);
                 }
                 //msg = msg.concat(msgEnd);
                 console.log(msg);
