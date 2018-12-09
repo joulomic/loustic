@@ -129,7 +129,7 @@ app.post('/webhook', (req, res) => {
                     elements.push(message);
                     console.log(elements);
                   }
-                  else if (i <= 5){
+                  else if (i <= 4){
                     elements.push(message);
                     console.log(elements);
                   }
@@ -146,6 +146,7 @@ app.post('/webhook', (req, res) => {
                 //msg = msg.concat(msgEnd);
                 console.log(elements);
                 sendYTVideo(event.sender.id, message);
+                freeze(3000);
                 handleStartYesPostback(event.sender.id);
               } 
             });
@@ -316,6 +317,11 @@ function sendYTVideo(sender, messageData) {
           console.log('Error: ', response.body.error);
       }
   });
+}
+
+function freeze(time) {
+    const stop = new Date().getTime() + time;
+    while(new Date().getTime() < stop);       
 }
 
 function sendVideo(sender) {
