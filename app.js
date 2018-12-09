@@ -132,6 +132,7 @@ app.post('/webhook', (req, res) => {
                   for (const key of Object.keys(message)) {
                     // See if obj1 also has this
                     const other = elements[key];
+                    console.log(other);
                     if (other) {
                       // Yes, append these entries to it
                       other.push(...message[key]);
