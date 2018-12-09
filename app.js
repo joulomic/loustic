@@ -69,7 +69,7 @@ app.post('/webhook', (req, res) => {
               if (data) {
                 console.log(data.data);
               
-                var json = {}; 
+                const msg = {}; 
  
                 for(var i in data.data.items) {
                   console.log('totoooooo');
@@ -102,9 +102,9 @@ app.post('/webhook', (req, res) => {
                       ]
                     }
                   }};
-                  json = json.concat(message);
+                  msg = msg.concat(message);
                 }
-                sendYTVideo(event.sender.id, json);
+                sendYTVideo(event.sender.id, msg);
               } 
             });
           }
