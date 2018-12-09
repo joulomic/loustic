@@ -108,7 +108,7 @@ app.post('/webhook', (req, res) => {
                     }
                   }};
                   */
-                  var message = [{
+                  var message = {
                           "title": title,
                           "subtitle": description,
                           "image_url": thumb,
@@ -123,14 +123,14 @@ app.post('/webhook', (req, res) => {
                             "title": "Play video"
                           }
                           ]
-                        }
-                      ];
+                        };
                   if (i == 0) {
-                    var elements = message;
+                    var elements = [];
+                    elements.push(message);
                     console.log(elements);
                   }
                   else {
-                    elements.concat(message);
+                    elements.push(message);
                     console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
