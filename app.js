@@ -143,8 +143,8 @@ app.post('/webhook', (req, res) => {
                     }
                   }};
                 //msg = msg.concat(msgEnd);
-                console.log(msg);
-                sendYTVideo(event.sender.id, msg);
+                console.log(message);
+                sendYTVideo(event.sender.id, message);
               } 
             });
           }
