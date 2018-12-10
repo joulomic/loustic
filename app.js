@@ -43,7 +43,7 @@ app.post('/webhook', (req, res) => {
     req.body.entry.forEach((entry) => {
       entry.messaging.forEach((event) => {
         if (event.message){
-          //console.log(event.message.quick_reply.payload);
+          console.log(event.message);
         }
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
