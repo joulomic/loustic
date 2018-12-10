@@ -10,19 +10,6 @@ var youtube = google.youtube({
    auth: "AIzaSyDoTv0uLjo42lMy7mlvgECfEx7t2e2Of38"
 });
 
-
-/*youtube.search.list({
-    part: 'snippet',
-    q: 'your search query'
-  }, function (err, data) {
-    if (err) {
-      console.error('Error: ' + err);
-    }
-    if (data) {
-      console.log(data)
-    }
-});*/
-
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
@@ -36,6 +23,7 @@ app.get('/webhook', (req, res) => {
   }
 });
 
+/* Shuffle list of values */
 function shuffle(array) {
   var tmp, current, top = array.length;
   if(top) while(--top) {
@@ -153,14 +141,18 @@ app.post('/webhook', (req, res) => {
               }
               if (data) {
                 console.log(data.data);
-
+                var a=[];
+                for(var j in data.data.items) {
+                  a[j]=j;
+                }
+                a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
-                  var title = data.data["items"][i]["snippet"]["title"];
-                  var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
-                  var url = data.data["items"][i]["id"]["videoId"];
+                  var title = data.data["items"][a[i]]["snippet"]["title"];
+                  var description = data.data["items"][a[i]]["snippet"]["description"];
+                  var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][a[i]]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   var message = {
@@ -194,7 +186,7 @@ app.post('/webhook', (req, res) => {
                     "attachment": {
                       "type": "template",
                       "payload": {
-                        "template_type": "generic",
+                        "template_type": "buttons",
                         "elements": elements
                     }
                 }}};
@@ -217,14 +209,18 @@ app.post('/webhook', (req, res) => {
               }
               if (data) {
                 console.log(data.data);
-
+                var a=[];
+                for(var j in data.data.items) {
+                  a[j]=j;
+                }
+                a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
-                  var title = data.data["items"][i]["snippet"]["title"];
-                  var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
-                  var url = data.data["items"][i]["id"]["videoId"];
+                  var title = data.data["items"][a[i]]["snippet"]["title"];
+                  var description = data.data["items"][a[i]]["snippet"]["description"];
+                  var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][a[i]]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   var message = {
@@ -281,14 +277,18 @@ app.post('/webhook', (req, res) => {
               }
               if (data) {
                 console.log(data.data);
-
+                var a=[];
+                for(var j in data.data.items) {
+                  a[j]=j;
+                }
+                a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
-                  var title = data.data["items"][i]["snippet"]["title"];
-                  var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
-                  var url = data.data["items"][i]["id"]["videoId"];
+                  var title = data.data["items"][a[i]]["snippet"]["title"];
+                  var description = data.data["items"][a[i]]["snippet"]["description"];
+                  var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][a[i]]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   var message = {
@@ -345,14 +345,18 @@ app.post('/webhook', (req, res) => {
               }
               if (data) {
                 console.log(data.data);
-
+                var a=[];
+                for(var j in data.data.items) {
+                  a[j]=j;
+                }
+                a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
-                  var title = data.data["items"][i]["snippet"]["title"];
-                  var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
-                  var url = data.data["items"][i]["id"]["videoId"];
+                  var title = data.data["items"][a[i]]["snippet"]["title"];
+                  var description = data.data["items"][a[i]]["snippet"]["description"];
+                  var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][a[i]]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   var message = {
@@ -409,14 +413,18 @@ app.post('/webhook', (req, res) => {
               }
               if (data) {
                 console.log(data.data);
-
+                var a=[];
+                for(var j in data.data.items) {
+                  a[j]=j;
+                }
+                a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
-                  var title = data.data["items"][i]["snippet"]["title"];
-                  var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
-                  var url = data.data["items"][i]["id"]["videoId"];
+                  var title = data.data["items"][a[i]]["snippet"]["title"];
+                  var description = data.data["items"][a[i]]["snippet"]["description"];
+                  var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][a[i]]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   var message = {
