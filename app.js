@@ -118,7 +118,7 @@ app.post('/webhook', (req, res) => {
                     "attachment": {
                       "type": "template",
                       "payload": {
-                        "template_type": "generic",
+                        "template_type": "button",
                         "elements": elements
                     }
                 }}};
