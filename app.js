@@ -451,6 +451,7 @@ app.post('/webhook', (req, res) => {
         }
         }
         else if (event.postback){
+        console.log(event.postback);
         if (event.postback && event.postback.payload === "GREETING") {
           handleGreetingPostback(event.sender.id);
         }
