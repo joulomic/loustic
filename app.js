@@ -36,6 +36,17 @@ app.get('/webhook', (req, res) => {
   }
 });
 
+function shuffle(array) {
+  var tmp, current, top = array.length;
+  if(top) while(--top) {
+    current = Math.floor(Math.random() * (top + 1));
+    tmp = array[current];
+    array[current] = array[top];
+    array[top] = tmp;
+  }
+  return array;
+}
+
 /* Handling all messenges */
 app.post('/webhook', (req, res) => {
   console.log(req.body);
@@ -70,14 +81,18 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data.data);
-              
+                var a[];
+                for(var j in data.data.items) {
+                  a[j]=j;
+                }
+                a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
-                  var title = data.data["items"][i]["snippet"]["title"];
-                  var description = data.data["items"][i]["snippet"]["description"];
-                  var thumb = data.data["items"][i]["snippet"]["thumbnails"]["high"]["url"];
-                  var url = data.data["items"][i]["id"]["videoId"];
+                  var title = data.data["items"][a[i]]["snippet"]["title"];
+                  var description = data.data["items"][a[i]]["snippet"]["description"];
+                  var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
+                  var url = data.data["items"][a[i]]["id"]["videoId"];
                   console.log(thumb);
                   console.log(url);
                   var message = {
