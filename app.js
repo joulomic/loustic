@@ -278,7 +278,7 @@ app.post('/webhook', (req, res) => {
             channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
             maxResults: '50',
             //order: 'date',
-            q: 'world'
+            q: 'tunisia|algeria|lebanon|chili|africa -seznec -mellie'
             }, function (err, data) {
               if (err) {
                 console.error('Error: ' + err);
@@ -350,7 +350,7 @@ app.post('/webhook', (req, res) => {
             channelId: 'UCHziILhb2V5ahNIMSmaOAbQ',
             maxResults: '50',
             //order: 'date',
-            q: 'electro'
+            q: 'electronic|techno|batofar'
             }, function (err, data) {
               if (err) {
                 console.error('Error: ' + err);
