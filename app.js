@@ -168,6 +168,10 @@ app.post('/webhook', (req, res) => {
                             "type": "web_url",
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
+                          },{
+                          "type":"postback",
+                          "title":"Browse more",
+                          "payload":"MORE"
                           }
                           ]
                         };        
@@ -236,6 +240,10 @@ app.post('/webhook', (req, res) => {
                             "type": "web_url",
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
+                          },{
+                          "type":"postback",
+                          "title":"Browse more",
+                          "payload":"MORE"
                           }
                           ]
                         };
@@ -304,6 +312,10 @@ app.post('/webhook', (req, res) => {
                             "type": "web_url",
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
+                          },{
+                          "type":"postback",
+                          "title":"Browse more",
+                          "payload":"MORE"
                           }
                           ]
                         };
@@ -372,6 +384,10 @@ app.post('/webhook', (req, res) => {
                             "type": "web_url",
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
+                          },{
+                          "type":"postback",
+                          "title":"Browse more",
+                          "payload":"MORE"
                           }
                           ]
                         };
@@ -440,6 +456,10 @@ app.post('/webhook', (req, res) => {
                             "type": "web_url",
                             "url": "https://www.youtube.com/watch?v="+url,
                             "title": "Play video"
+                          },{
+                          "type":"postback",
+                          "title":"Browse more",
+                          "payload":"MORE"
                           }
                           ]
                         };
@@ -482,28 +502,6 @@ app.post('/webhook', (req, res) => {
           //freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
-        /*
-        else if (event.postback && event.postback.payload === "START_NO") {
-          sendMessage(event, "Alright, just text me 'Music' whenever you feel like discovering music later on!");
-        }
-        else if (event.postback && event.postback.payload === "START_YES") {
-          handleStartYesPostback(event.sender.id);
-        }
-        else if (event.postback && event.postback.payload === "HIPHOP") { 
-          youtube.search.list({
-          part: 'snippet',
-          q: 'rap'
-          }, function (err, data) {
-            if (err) {
-              console.error('Error: ' + err);
-            }
-            if (data) {
-              console.log(data)
-            }
-          });
-        }
-        */
-
       };
     });
     res.status(200).end();
