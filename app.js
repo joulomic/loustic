@@ -455,7 +455,7 @@ app.post('/webhook', (req, res) => {
         if (event.postback && event.postback.payload === "GREETING") {
           handleGreetingPostback(event.sender.id);
         }
-        else if (event.postback === "MORE") {
+        else if (event.postback.payload === "MORE") {
           //freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
