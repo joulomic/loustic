@@ -433,7 +433,7 @@ app.post('/webhook', (req, res) => {
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
-                a = shuffle(a);
+                //a = shuffle(a);
                 for(var i in data.data.items) {
                   console.log('totoooooo');
                   console.log(i==0);
