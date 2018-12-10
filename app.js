@@ -81,7 +81,7 @@ app.post('/webhook', (req, res) => {
               } 
               if (data) {
                 console.log(data.data);
-                var a[];
+                var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
