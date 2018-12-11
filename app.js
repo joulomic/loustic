@@ -45,13 +45,13 @@ app.post('/webhook', (req, res) => {
           console.log("message: ",event.message);
           console.log(event.sender.id);
           console.log("payload: ",event.message.quick_reply);        
-        if (event.message && event.message.text) {
-          if (event.message.text === 'Music' || event.message.text === 'music') {
-            handleStartYesPostback(event.sender.id);
+        //if (event.message && event.message.text) {
+        //  if (event.message.text === 'Music' || event.message.text === 'music') {
+        //    handleStartYesPostback(event.sender.id);
             //sendVideo(event.sender.id);
-          }
-        }
-        else if (event.message.quick_reply) {
+        //  }
+        //}
+        if (event.message.quick_reply) {
           if (event.message.quick_reply.payload === "START_YES") {
             handleStartYesPostback(event.sender.id);
           }
@@ -446,6 +446,12 @@ app.post('/webhook', (req, res) => {
           //freeze(3000);
           handleStartYesPostback(event.sender.id);
         }
+        }
+        else if (event.message && event.message.text) {
+          if (event.message.text === 'Music' || event.message.text === 'music') {
+            handleStartYesPostback(event.sender.id);
+            //sendVideo(event.sender.id);
+          }
         }
         } 
         else if (event.postback){
