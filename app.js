@@ -448,7 +448,7 @@ app.post('/webhook', (req, res) => {
         }
         }
         else if (event.message && event.message.text) {
-          if (event.message.text === 'Music' || event.message.text === 'music') {
+          if (event.message.text.includes('Music') || event.message.text.includes('music')) {
             handleStartYesPostback(event.sender.id);
             //sendVideo(event.sender.id);
           }
