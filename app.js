@@ -43,10 +43,10 @@ app.post('/webhook', (req, res) => {
       entry.messaging.forEach((event) => {
         if (event.message){
           console.log(event.message);
+          console.log(event.sender.id);
         }
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
-            console.log('Music');
             handleStartYesPostback(event.sender.id);
             //sendVideo(event.sender.id);
           }
@@ -68,21 +68,16 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               } 
               if (data) {
-                console.log(data.data);
                 var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
                 a = shuffle(a);
                 for(var i in data.data.items) {
-                  console.log('totoooooo');
-                  console.log(i==0);
                   var title = data.data["items"][a[i]]["snippet"]["title"];
                   var description = data.data["items"][a[i]]["snippet"]["description"];
                   var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][a[i]]["id"]["videoId"];
-                  console.log(thumb);
-                  console.log(url);
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -106,11 +101,9 @@ app.post('/webhook', (req, res) => {
                   if (i == 0) {
                     var elements = [];
                     elements.push(message);
-                    console.log(elements);
                   }
                   else if (i <= 4){
                     elements.push(message);
-                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
@@ -122,7 +115,6 @@ app.post('/webhook', (req, res) => {
                         "elements": elements
                     }
                 }}};
-                console.log(elements);
                 sendYTVideo(event.sender.id, message);
                
             });
@@ -140,21 +132,16 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               }
               if (data) {
-                console.log(data.data);
                 var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
                 a = shuffle(a);
                 for(var i in data.data.items) {
-                  console.log('totoooooo');
-                  console.log(i==0);
                   var title = data.data["items"][a[i]]["snippet"]["title"];
                   var description = data.data["items"][a[i]]["snippet"]["description"];
                   var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][a[i]]["id"]["videoId"];
-                  console.log(thumb);
-                  console.log(url);
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -178,11 +165,9 @@ app.post('/webhook', (req, res) => {
                   if (i == 0) {
                     var elements = [];
                     elements.push(message);
-                    console.log(elements);
                   }
                   else if (i <= 4){
                     elements.push(message);
-                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
@@ -194,7 +179,6 @@ app.post('/webhook', (req, res) => {
                         "elements": elements
                     }
                 }}};
-                console.log(elements);
                 sendYTVideo(event.sender.id, message);
               
             });
@@ -212,21 +196,16 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               }
               if (data) {
-                console.log(data.data);
                 var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
                 a = shuffle(a);
                 for(var i in data.data.items) {
-                  console.log('totoooooo');
-                  console.log(i==0);
                   var title = data.data["items"][a[i]]["snippet"]["title"];
                   var description = data.data["items"][a[i]]["snippet"]["description"];
                   var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][a[i]]["id"]["videoId"];
-                  console.log(thumb);
-                  console.log(url);
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -250,11 +229,9 @@ app.post('/webhook', (req, res) => {
                   if (i == 0) {
                     var elements = [];
                     elements.push(message);
-                    console.log(elements);
                   }
                   else if (i <= 4){
                     elements.push(message);
-                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
@@ -266,7 +243,6 @@ app.post('/webhook', (req, res) => {
                         "elements": elements
                     }
                 }}};
-                console.log(elements);
                 sendYTVideo(event.sender.id, message);
               
             });
@@ -284,21 +260,16 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               }
               if (data) {
-                console.log(data.data);
                 var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
                 a = shuffle(a);
                 for(var i in data.data.items) {
-                  console.log('totoooooo');
-                  console.log(i==0);
                   var title = data.data["items"][a[i]]["snippet"]["title"];
                   var description = data.data["items"][a[i]]["snippet"]["description"];
                   var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][a[i]]["id"]["videoId"];
-                  console.log(thumb);
-                  console.log(url);
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -322,11 +293,9 @@ app.post('/webhook', (req, res) => {
                   if (i == 0) {
                     var elements = [];
                     elements.push(message);
-                    console.log(elements);
                   }
                   else if (i <= 4){
                     elements.push(message);
-                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
@@ -338,7 +307,6 @@ app.post('/webhook', (req, res) => {
                         "elements": elements
                     }
                 }}};
-                console.log(elements);
                 sendYTVideo(event.sender.id, message);
               
             });
@@ -356,21 +324,16 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               }
               if (data) {
-                console.log(data.data);
                 var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
                 a = shuffle(a);
                 for(var i in data.data.items) {
-                  console.log('totoooooo');
-                  console.log(i==0);
                   var title = data.data["items"][a[i]]["snippet"]["title"];
                   var description = data.data["items"][a[i]]["snippet"]["description"];
                   var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][a[i]]["id"]["videoId"];
-                  console.log(thumb);
-                  console.log(url);
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -394,11 +357,9 @@ app.post('/webhook', (req, res) => {
                   if (i == 0) {
                     var elements = [];
                     elements.push(message);
-                    console.log(elements);
                   }
                   else if (i <= 4){
                     elements.push(message);
-                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
@@ -410,7 +371,6 @@ app.post('/webhook', (req, res) => {
                         "elements": elements
                     }
                 }}};
-                console.log(elements);
                 sendYTVideo(event.sender.id, message);
               
             });
@@ -428,21 +388,16 @@ app.post('/webhook', (req, res) => {
                 console.error('Error: ' + err);
               }
               if (data) {
-                console.log(data.data);
                 var a=[];
                 for(var j in data.data.items) {
                   a[j]=j;
                 }
                 //a = shuffle(a);
                 for(var i in data.data.items) {
-                  console.log('totoooooo');
-                  console.log(i==0);
                   var title = data.data["items"][a[i]]["snippet"]["title"];
                   var description = data.data["items"][a[i]]["snippet"]["description"];
                   var thumb = data.data["items"][a[i]]["snippet"]["thumbnails"]["high"]["url"];
                   var url = data.data["items"][a[i]]["id"]["videoId"];
-                  console.log(thumb);
-                  console.log(url);
                   var message = {
                           "title": title,
                           "subtitle": description,
@@ -466,11 +421,9 @@ app.post('/webhook', (req, res) => {
                   if (i == 0) {
                     var elements = [];
                     elements.push(message);
-                    console.log(elements);
                   }
                   else if (i <= 4){
                     elements.push(message);
-                    console.log(elements);
                   }
                   //msg = Object.assign(msg, message);
                 }
@@ -482,7 +435,6 @@ app.post('/webhook', (req, res) => {
                         "elements": elements
                     }   
                 }}}; 
-                console.log(elements);
                 sendYTVideo(event.sender.id, message);
                
             });
