@@ -447,7 +447,7 @@ app.post('/webhook', (req, res) => {
           handleStartYesPostback(event.sender.id);
         }
         }
-         
+        } 
         else if (event.postback){
         console.log(event.postback);
         if (event.postback && event.postback.payload === "GREETING") {
@@ -458,7 +458,7 @@ app.post('/webhook', (req, res) => {
           handleStartYesPostback(event.sender.id);
         }
        }
-      };
+      //};
     });
     res.status(200).end();
   });
