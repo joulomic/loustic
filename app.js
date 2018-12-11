@@ -44,7 +44,7 @@ app.post('/webhook', (req, res) => {
         if (event.message){
           console.log(event.message);
           console.log(event.sender.id);
-        }
+        
         if (event.message && event.message.text) {
           if (event.message.text === 'Music') {
             handleStartYesPostback(event.sender.id);
@@ -447,7 +447,7 @@ app.post('/webhook', (req, res) => {
           handleStartYesPostback(event.sender.id);
         }
         }
-        
+        } 
         else if (event.postback){
         console.log(event.postback);
         if (event.postback && event.postback.payload === "GREETING") {
