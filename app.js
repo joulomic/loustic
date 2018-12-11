@@ -51,6 +51,7 @@ app.post('/webhook', (req, res) => {
             //sendVideo(event.sender.id);
           }
         }
+        console.log(event.message.quick_reply.payload);
         else if (event.message && event.message.quick_reply.payload) {
           if (event.message.quick_reply.payload === "START_YES") {
             handleStartYesPostback(event.sender.id);
