@@ -458,10 +458,9 @@ app.post('/webhook', (req, res) => {
           handleStartYesPostback(event.sender.id);
         }
        }
-      //};
+      });
     });
     res.status(200).end();
-  });
  }
 });
 
