@@ -42,7 +42,7 @@ app.post('/webhook', (req, res) => {
     req.body.entry.forEach((entry) => {
       entry.messaging.forEach((event) => {
         if (event.message){
-          console.log(event.message);
+          console.log("message: ",event.message);
           console.log(event.sender.id);
         
         if (event.message && event.message.text) {
@@ -449,15 +449,15 @@ app.post('/webhook', (req, res) => {
         }
         } 
         else if (event.postback){
-        console.log(event.postback);
-        if (event.postback && event.postback.payload === "GREETING") {
-          handleGreetingPostback(event.sender.id);
+          console.log("postback: ", event.postback);
+          if (event.postback && event.postback.payload === "GREETING") {
+            handleGreetingPostback(event.sender.id);
+          }
+          else if (event.postback.payload === "MORE") {
+            //freeze(3000);
+            handleStartYesPostback(event.sender.id);
+          }
         }
-        else if (event.postback.payload === "MORE") {
-          //freeze(3000);
-          handleStartYesPostback(event.sender.id);
-        }
-       }
       });
     });
    }
