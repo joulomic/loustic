@@ -44,7 +44,7 @@ app.post('/webhook', (req, res) => {
         if (event.message){
           console.log("message: ",event.message);
           console.log(event.sender.id);
-          console.log(event.message.quick_reply.payload);        
+          console.log("payload: ",event.message.quick_reply.payload);        
         if (event.message && event.message.text) {
           if (event.message.text === 'Music' || event.message.text === 'music') {
             handleStartYesPostback(event.sender.id);
